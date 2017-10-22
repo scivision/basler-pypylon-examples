@@ -6,7 +6,6 @@ Nblocks = 100  # arbitrary number of frames to plot
 
 def connect(camdev,camind=0):
     
-
     cam = pypylon.factory.create_device(camdev[camind])
 
     cam.open()
@@ -34,7 +33,7 @@ def simpleloop(cams):
 
         for j,I in enumerate(cam.grab_images(Nblock)):  # grab_images argument is how many images to yield
             h.set_data(I)
-            ht.set_text('Image # {} / {}'.format(i*Nblock+j,Nblocks*Nblock))
+            ht.set_text(f'Image # {i*Nblock+j} / {Nblocks*Nblock}')
             draw(); pause(0.01)
 
         cam.close()
